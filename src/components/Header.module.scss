@@ -1,5 +1,10 @@
 .header {
-  height: 6rem;
-  background: #202026;
-  color: #e1e1e6;
+  background: var(--gray-800);
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0;
+
+  img {
+    height: 2rem;
+  }
 }

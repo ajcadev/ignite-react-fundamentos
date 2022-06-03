@@ -1,9 +1,11 @@
 import styles from './Header.module.scss'
 
+import igniteLogo from '../assets/ignite-logo.svg'
+
 export function Header() {
   return (
     <header className={styles.header}>
-      <strong>React Feed</strong>
+      <img src={igniteLogo} alt="logotipo do ignite" />
     </header>
   )
 }
