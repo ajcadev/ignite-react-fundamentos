@@ -1,8 +1,8 @@
 import { Header } from "./components/Header";
+import { Sidebar } from "./components/Sidebar";
+import { Post } from "./components/Post";
 import styles from './App.module.scss'
 import '../src/global.scss'
-import { Post } from "./Post";
-import { Sidebar } from "./components/Sidebar";
 export function App() {
   return (
     <div>
@@ -11,8 +11,12 @@ export function App() {
         <Sidebar />
         <main>
           <Post
-            author="Diego Fernandes"
-            content="Curso de ReactJS"
+            author='Diego Fernandes'
+            content='Um post muito legal'
+          />
+          <Post
+            author='Diego Fernandes'
+            content='Um post muito legal'
           />
         </main>
       </div>
