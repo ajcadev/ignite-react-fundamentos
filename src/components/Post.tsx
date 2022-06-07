@@ -57,7 +57,7 @@ export function Post({author, content, publishedAt}: PostProps) {
       <div className={styles.content}>
         {content.map(item => {
           return(
-            item.type==='paragraph' ? <p>{item.content}</p> : <p><a href='#'>{item.content}</a></p>
+            item.type==='paragraph' ? <p key={item.content}>{item.content}</p> : <p key={item.content}><a href='#'>{item.content}</a></p>
           )
         })}
       </div>
@@ -74,9 +74,7 @@ export function Post({author, content, publishedAt}: PostProps) {
       </form>
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return(
-            <Comment content={comment} />
-          )
+          return(<Comment key={comment} content={comment} />)
         })}
       </div>
     </article>
