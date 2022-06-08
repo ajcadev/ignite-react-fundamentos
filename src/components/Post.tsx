@@ -34,7 +34,7 @@ export function Post({author, content, publishedAt}: PostProps) {
     addSuffix: true
   })
 
-  function handleCreateNewComment(event: React.FormEvent<HTMLFormElement>) {
+  function handleCreateNewComment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setComments([...comments, newCommentText])
     setNewCommentText('')
@@ -44,6 +44,17 @@ export function Post({author, content, publishedAt}: PostProps) {
     const commentsWithoutDeletedOne = comments.filter(comment => comment !== commentToDelete)
     setComments(commentsWithoutDeletedOne)
   }
+
+  function handleNewCommentChange(event: FormEvent<HTMLTextAreaElement>) {
+    event.currentTarget.setCustomValidity('')
+    setNewCommentText(event.currentTarget.value)
+  }
+
+  function handleNewCommentInvalid(event: FormEvent<HTMLTextAreaElement>) {
+    event.currentTarget.setCustomValidity('Esse campo é obrigatório')
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0
 
   return (
     <article className={styles.post}>
@@ -70,12 +81,13 @@ export function Post({author, content, publishedAt}: PostProps) {
         <strong>Deixe seu feedback</strong>
         <textarea
           value={newCommentText}
-          onChange={(e) => setNewCommentText(e.currentTarget.value)}
+          onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
           placeholder='Deixe um comentário'
           required
         />
         <footer>
-          <button type='submit'>Publicar</button>
+          <button type='submit' disabled={isNewCommentEmpty}>Publicar</button>
         </footer>
       </form>
       <div className={styles.commentList}>
